@@ -263,4 +263,76 @@ console.log(addNums(5));
 
 // We can donthis for array
 todos.forEach*((todo) => console.log());
+
+//Object Litterals One is functions with prototypes oe es6 Classes
+//functions with prototypes - it should start with capital letter
+//construction function
+function Person(firstName,lastNamem, dob) {
+    this.firstName = firstName;
+    this.lastNamem = lastNamem;
+    //dob is as string we can set it as actual; date constructor
+    //this.dob = dob;
+    this.dob = new Date(dob);
+    this.getBirthYear = function() {
+        return this.dob.getFullYear();
+    }
+    this.getFullName = function() {
+        return `${this.firstName} ${this.lastNamem}`;
+    }
+}
+
+//Instantiate object
+const person1 = new Person('John', 'Doe', '4-3-1980');
+const person2 = new Person('Mary', 'Smith', '3-6-1970');
+
+console.log(person2.dob);
+console.log(person2.dob.getFullYear()); // we can get full year and there are many more methods
+console.log(person1.getBirthYear());
+console.log(person1.getFullName());
+console.log(person1); // This is Object Prototype
+
+//To make a Prototype
+function Person(firstName,lastName, dob) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dob = new Date(dob);
+}
+
+Person.prototype.getBirthYear = function() {
+    return this.dob.getFullYear();
+}
+
+Person.prototype.getFullName = function() {
+    return `${this.firstName} ${this.lastName}`;
+}
+
+const person1 = new Person('John', 'Doe', '4-3-1980');
+const person2 = new Person('Mary', 'Smith', '3-6-1970');
+
+console.log(person2.getFullName());
+console.log(person1);
 */
+
+//With es6 same thing but its a syntactic sugar
+
+//Class
+class Person {
+    constructor(firstName,lastName, dob) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = new Date(dob);
+    }
+    getBirthYear() {
+        return this.dob.getFullYear();
+    }
+    
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+
+const person1 = new Person('John', 'Doe', '4-3-1980');
+const person2 = new Person('Mary', 'Smith', '3-6-1970');
+console.log(person2.getFullName());
+console.log(person1);
+
